@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finexa | Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">Finexa</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="register-container">
+        <h2>Employee Registration</h2>
+        <form id="registerForm" class="form-grid">
+          <div>
+            <label for="empId">Employee ID</label>
+            <input type="text" id="empId" name="empId" readonly />
+          </div>
+
+          <div>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" maxlength="50" required />
+          </div>
+
+          <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" maxlength="50" required />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" maxlength="30" required />
+          </div>
+
+          <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" maxlength="30" required />
+          </div>
+
+          <div class="full-width">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" maxlength="100" required></textarea>
+          </div>
+
+          <div class="full-width">
+            <label for="contact">Contact Number</label>
+            <input type="text" id="contact" name="contact" maxlength="10" required />
+          </div>
+
+          <div class="full-width">
+            <button type="submit">Register</button>
+          </div>
+        </form>
+
+        <div id="acknowledgement" class="hidden">
+          <p class="success">Employee Registration Successful</p>
+          <p><strong>Employee ID:</strong> <span id="ackEmpId"></span></p>
+          <p><strong>Name:</strong> <span id="ackName"></span></p>
+          <p><strong>Email:</strong> <span id="ackEmail"></span></p>
+        </div>
+      </div>
+      <footer>
+        &copy; 2025 Finexa. All rights reserved. | Privacy Policy | Terms of Service
+      </footer>
+    </main>
+  </div>
+    <script src="script.js"></script>
+  </body>
+</html>

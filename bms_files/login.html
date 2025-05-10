@@ -1,0 +1,51 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finexa | Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">Finexa</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="register-container">
+        <h2>Employee Login</h2>
+        <form id="loginForm" class="form-grid">
+          <div class="full-width">
+            <label for="loginEmpId">Employee ID</label>
+            <input type="text" id="loginEmpId" name="loginEmpId" maxlength="10" required />
+          </div>
+
+          <div class="full-width">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" maxlength="30" required />
+          </div>
+
+          <div class="full-width">
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+
+      <footer>
+        &copy; 2025 Finexa. All rights reserved. | Privacy Policy | Terms of Service
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
