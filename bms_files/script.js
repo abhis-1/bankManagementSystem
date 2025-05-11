@@ -61,3 +61,41 @@ if (loginForm) {
     window.location.href = "index.html";
   });
 }
+
+
+// JS: Highlight active link
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.sidebar nav ul li a');
+  const currentPage = window.location.pathname.split('/').pop(); // e.g. "dashboard.html"
+
+  links.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+});
+
+
+function toggleDropdown(menuId) {
+  const dropdown = document.getElementById(menuId);
+  dropdown.classList.toggle("open");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".dropdown-menu a");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    const linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+
+      // Also expand the parent dropdown
+      const parentDropdown = link.closest(".dropdown-menu");
+      if (parentDropdown) {
+        parentDropdown.classList.add("open");
+      }
+    }
+  });
+});

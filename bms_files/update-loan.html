@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finexa | Loan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+        background-color: #003366;
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 5px;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #responseMessage {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <header>Finexa</header>
+  <div class="container">
+    <h2>Update Loan Request</h2>
+    <form id="updateLoanForm">
+      <label>Customer SSN ID:</label>
+      <input type="text" id="ssn" readonly />
+
+      <label>Customer Name:</label>
+      <input type="text" id="name" />
+
+      <label>Occupation:</label>
+      <input type="text" id="occupation" />
+
+      <label>Employer Name:</label>
+      <input type="text" id="employerName" />
+
+      <label>Employer Address:</label>
+      <input type="text" id="employerAddress" />
+
+      <label>Email:</label>
+      <input type="email" id="email" />
+
+      <label>Address:</label>
+      <input type="text" id="address" />
+
+      <label>Marital Status:</label>
+      <select id="maritalStatus">
+        <option value="">Select</option>
+        <option>Single</option>
+        <option>Married</option>
+      </select>
+
+      <label>Contact Number:</label>
+      <input type="text" id="contact" />
+
+      <label>Loan Amount:</label>
+      <input type="number" id="loanAmount" />
+
+      <label>Loan Duration (months):</label>
+      <input type="number" id="duration" />
+
+      <button type="button" onclick="updateLoan()">Update Loan</button>
+    </form>
+    <div id="responseMessage"></div>
+  </div>
+
+  <script>
+    function updateLoan() {
+      const name = document.getElementById('name').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      const amount = document.getElementById('loanAmount').value;
+
+      if (!name || !contact || !amount) {
+        document.getElementById('responseMessage').innerText = "Please fill all required fields correctly.";
+        document.getElementById('responseMessage').style.color = "red";
+        return;
+      }
+
+      // Simulate API call
+      document.getElementById('responseMessage').innerText = "Loan details updated successfully.";
+      document.getElementById('responseMessage').style.color = "green";
+    }
+  </script>
+</body>
+</html>

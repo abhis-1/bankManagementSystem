@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finexa | Loans</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+        background-color: #003366;
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+    .container {
+      width: 60%;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 25px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .view-btn {
+      background-color: #007bff;
+      color: white;
+    }
+    .cancel-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>Finexa</header>
+  <div class="container">
+    <h2>Cancel Loan Request</h2>
+    <div class="form-group">
+      <label for="loanId">Loan ID</label>
+      <input type="text" id="loanId" placeholder="Enter Loan ID">
+    </div>
+    <div class="form-group">
+      <label for="ssnId">Customer SSN ID</label>
+      <input type="text" id="ssnId" placeholder="Enter Customer SSN ID" disabled>
+    </div>
+    <div class="form-group">
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" placeholder="Customer Name" disabled>
+    </div>
+    <div class="form-group">
+      <label for="loanAmount">Loan Amount</label>
+      <input type="text" id="loanAmount" placeholder="Loan Amount" disabled>
+    </div>
+    <div class="form-group">
+      <label for="loanDuration">Loan Duration</label>
+      <input type="text" id="loanDuration" placeholder="Loan Duration" disabled>
+    </div>
+
+    <div class="button-group">
+      <button class="view-btn" onclick="viewLoanDetails()">View Details</button>
+      <button class="cancel-btn" onclick="cancelLoan()">Cancel Loan</button>
+    </div>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    function viewLoanDetails() {
+      const loanId = document.getElementById('loanId').value.trim();
+      const messageEl = document.getElementById('message');
+
+      if (loanId === '') {
+        messageEl.textContent = 'Please enter a valid Loan ID.';
+        messageEl.className = 'message error';
+        return;
+      }
+
+      // Simulate fetched data
+      document.getElementById('ssnId').value = '5566778899';
+      document.getElementById('customerName').value = 'Ankita Sharma';
+      document.getElementById('loanAmount').value = '500000';
+      document.getElementById('loanDuration').value = '48 months';
+      messageEl.textContent = 'Loan details fetched successfully.';
+      messageEl.className = 'message success';
+    }
+
+    function cancelLoan() {
+      const loanId = document.getElementById('loanId').value.trim();
+      const messageEl = document.getElementById('message');
+
+      if (loanId === '') {
+        messageEl.textContent = 'Loan ID is required to cancel the loan.';
+        messageEl.className = 'message error';
+        return;
+      }
+
+      // Simulate cancellation success
+      messageEl.textContent = 'Loan request canceled successfully.';
+      messageEl.className = 'message success';
+
+      // Clear fields
+      document.getElementById('loanId').value = '';
+      document.getElementById('ssnId').value = '';
+      document.getElementById('customerName').value = '';
+      document.getElementById('loanAmount').value = '';
+      document.getElementById('loanDuration').value = '';
+    }
+  </script>
+</body>
+</html>

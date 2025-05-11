@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finexa | Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo">Finexa</div>
+      <div class="profile-dropdown">
+        <i class="fa fa-user-circle"></i>
+        <div class="dropdown-content">
+          <a href="login.html">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div
+            class="sidebar-link"
+            onclick="toggleDropdown('customerDropdown')"
+          >
+            Customer Management ▾
+          </div>
+          <ul class="dropdown-menu" id="customerDropdown">
+            <li><a href="add-customer.html">Add Customer</a></li>
+            <li><a href="edit-customer.html">Edit Customer</a></li>
+            <li><a href="delete-customer.html">Delete Customer</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <div
+            class="sidebar-link"
+            onclick="toggleDropdown('transactionDropdown')"
+          >
+            Transaction Processing ▾
+          </div>
+          <ul class="dropdown-menu" id="transactionDropdown">
+            <li><a href="add-transaction.html">Add Transaction</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-link" onclick="toggleDropdown('loanDropdown')">
+            Loan Management ▾
+          </div>
+          <ul class="dropdown-menu" id="loanDropdown">
+            <li><a href="initiate-loan.html">Initiate Loan</a></li>
+            <li><a href="update-loan.html">Update Loan</a></li>
+            <li><a href="delete-loan.html">Delete Loan</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="dashboard-overview">
+          <h2>Welcome to the Dashboard</h2>
+          <p>Use the side menu to manage customers, transactions, and loans.</p>
+
+          <div class="dashboard-cards">
+            <div class="card">
+              <h3>Total Customers</h3>
+              <p>153</p>
+            </div>
+            <div class="card">
+              <h3>Recent Transactions</h3>
+              <p>28</p>
+            </div>
+            <div class="card">
+              <h3>Active Loans</h3>
+              <p>12</p>
+            </div>
+          </div>
+        </section>
+        <footer>&copy; 2025 Finexa. All rights reserved.</footer>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

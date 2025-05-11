@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finexa | Customer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #003366;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      display: block;
+      color: #003366;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0055aa;
+    }
+
+    .success-message {
+      text-align: center;
+      margin-top: 1rem;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+
+    .section-title {
+      grid-column: 1 / -1;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      color: #003366;
+    }
+  </style>
+</head>
+<body>
+  <header>Finexa</header>
+
+  <div class="container">
+    <h2>Update Customer Information</h2>
+
+    <form id="fetchForm">
+      <div class="full-width">
+        <label>Enter SSN ID to Fetch Customer</label>
+        <input type="text" id="fetchSsn" required pattern="\d{9}" placeholder="Enter 9-digit SSN">
+      </div>
+      <div class="full-width">
+        <button type="submit">Fetch Customer</button>
+      </div>
+    </form>
+
+    <form id="editForm" style="display:none;">
+      <div class="section-title">Editable Fields</div>
+
+      <div>
+        <label>Customer Name</label>
+        <input type="text" id="editName" required>
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" id="editEmail" required>
+      </div>
+
+      <div>
+        <label>Contact Number</label>
+        <input type="text" id="editContact" required pattern="\d{10}" maxlength="10">
+      </div>
+
+      <div>
+        <label>Marital Status</label>
+        <select id="editMarital" required>
+          <option value="">--Select--</option>
+          <option>Single</option>
+          <option>Married</option>
+          <option>Divorced</option>
+        </select>
+      </div>
+
+      <div class="full-width">
+        <label>Address</label>
+        <textarea id="editAddress" required></textarea>
+      </div>
+
+      <div class="full-width">
+        <button type="submit">Update Customer</button>
+      </div>
+    </form>
+
+    <div id="editSuccess" class="success-message">
+      ✅ Customer details updated successfully!
+    </div>
+  </div>
+
+  <script>
+    const fetchForm = document.getElementById('fetchForm');
+    const editForm = document.getElementById('editForm');
+    const editSuccess = document.getElementById('editSuccess');
+
+    fetchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const ssn = document.getElementById('fetchSsn').value.trim();
+      if (!ssn.match(/^\d{9}$/)) {
+        alert('Invalid SSN ID.');
+        return;
+      }
+
+      
+      document.getElementById('editName').value = "John Doe";
+      document.getElementById('editEmail').value = "john@example.com";
+      document.getElementById('editContact').value = "9876543210";
+      document.getElementById('editMarital').value = "Single";
+      document.getElementById('editAddress').value = "123 Sample Street";
+
+      editForm.style.display = 'grid';
+      editSuccess.style.display = 'none';
+    });
+
+    editForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!editForm.checkValidity()) {
+        alert('Please fill all fields correctly.');
+        return;
+      }
+
+      editSuccess.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

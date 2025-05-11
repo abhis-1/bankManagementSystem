@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finexa | Transaction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
+    header {
+        background-color: #003366;
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+    .submit-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 200px;
+      justify-self: center;
+      grid-column: span 2;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      grid-column: span 2;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <header>Finexa</header>
+  <div class="container">
+    <h2>Transaction Entry</h2>
+    <form id="transactionForm">
+      <div>
+        <label for="transactionId">Transaction ID</label>
+        <input type="text" id="transactionId" required />
+      </div>
+      <div>
+        <label for="ssn">Customer SSN ID</label>
+        <input type="text" id="ssn" required />
+      </div>
+      <div>
+        <label for="name">Customer Name</label>
+        <input type="text" id="name" required />
+      </div>
+      <div>
+        <label for="accountId">Account ID</label>
+        <input type="text" id="accountId" required />
+      </div>
+      <div>
+        <label for="aadhaar">Aadhaar Card No.</label>
+        <input type="text" id="aadhaar" required />
+      </div>
+      <div>
+        <label for="pan">PAN Card No.</label>
+        <input type="text" id="pan" required />
+      </div>
+      <div class="full-width">
+        <label for="address">Address</label>
+        <input type="text" id="address" required />
+      </div>
+      <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" required />
+      </div>
+      <div>
+        <label for="contact">Contact Number</label>
+        <input type="text" id="contact" required />
+      </div>
+      <div>
+        <label for="mode">Mode of Transaction</label>
+        <select id="mode" required>
+          <option value="">Select</option>
+          <option value="Cash">Cash</option>
+          <option value="Cheque">Cheque</option>
+          <option value="Online">Online</option>
+          <option value="UPI">UPI</option>
+        </select>
+      </div>
+      <div>
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" required />
+      </div>
+      <div class="full-width">
+        <label for="type">Credit/Debit</label>
+        <select id="type" required>
+          <option value="">Select</option>
+          <option value="Credit">Credit</option>
+          <option value="Debit">Debit</option>
+        </select>
+      </div>
+      <div class="message" id="message"></div>
+      <button type="submit" class="submit-btn">Submit Transaction</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("transactionForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const transactionId = document.getElementById("transactionId").value.trim();
+      const ssn = document.getElementById("ssn").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const accountId = document.getElementById("accountId").value.trim();
+      const aadhaar = document.getElementById("aadhaar").value.trim();
+      const pan = document.getElementById("pan").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const date = document.getElementById("date").value;
+      const contact = document.getElementById("contact").value.trim();
+      const mode = document.getElementById("mode").value;
+      const amount = parseFloat(document.getElementById("amount").value);
+      const type = document.getElementById("type").value;
+      const message = document.getElementById("message");
+
+      if (!transactionId || !ssn || !name || !accountId || !aadhaar || !pan || !address || !date || !contact || !mode || !amount || !type) {
+        message.style.color = "red";
+        message.textContent = "All fields are required.";
+        return;
+      }
+
+      if (amount <= 0) {
+        message.style.color = "red";
+        message.textContent = "Transaction amount must be greater than 0.";
+        return;
+      }
+
+      message.style.color = "green";
+      message.textContent = `Transaction submitted successfully! (${type} of Rs. ${amount})`;
+
+    });
+  </script>
+</body>
+</html>
